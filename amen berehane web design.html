@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amen Berhane | Cybersecurity Specialist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      color: #111827;
+      background-color: #f9fafb;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #1f2937 !important;
+      color: #f9fafb !important;
+    }
+    .dark-mode input,
+    .dark-mode textarea {
+      background-color: #374151;
+      color: white;
+      border-color: #4b5563;
+    }
+    .dark-mode header,
+    .dark-mode section,
+    .dark-mode footer {
+      background-color: #1f2937 !important;
+      color: #f9fafb !important;
+    }
+    .dark-mode a {
+      color: #93c5fd !important;
+    }
+    .dark-mode button {
+      background-color: #2563eb;
+      color: white;
+    }
+    #dark-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <!-- ... your header here (omitted for brevity) ... -->
+  </header>
+
+  <!-- Hero Section -->
+  <section>
+    <!-- ... your hero section here (omitted for brevity) ... -->
+    <a href="#contact" id="contactBtn" style="background: #2563eb; color: white; padding: 0.75rem 1.75rem; border-radius: 8px;">Get in touch</a>
+  </section>
+
+  <!-- About & Projects sections here (optional to include) -->
+
+  <!-- Contact Section -->
+  <section id="contact" style="padding: 4rem 5%;">
+    <h2>Let's Collaborate</h2>
+    <p id="welcomeMsg" style="font-weight: 600; margin-bottom: 1rem;"></p>
+    <form id="contactForm" style="max-width: 500px; margin: auto;">
+      <label>Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name" style="width:100%; padding:0.5rem; margin-bottom:1rem;">
+      <label>Your Email</label>
+      <input type="email" id="email" placeholder="Enter your email" style="width:100%; padding:0.5rem; margin-bottom:1rem;">
+      <label>Your Message</label>
+      <textarea id="message" placeholder="Your message" style="width:100%; padding:0.5rem; margin-bottom:1rem;"></textarea>
+      <button type="submit" style="background:#2563eb; color:white; padding:0.75rem 1.5rem; border:none; border-radius:8px;">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer (Optional) -->
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-toggle">🌙 Toggle Dark Mode</button>
+
+  <!-- JavaScript -->
+  <script>
+    // Interactivity: Show alert when contact button is clicked
+    document.getElementById('contactBtn').addEventListener('click', () => {
+      alert('Ready to get in touch? Scroll down to the contact form!');
+    });
+
+    // Dynamic Greeting: Update welcome message when typing name
+    const nameInput = document.getElementById('name');
+    const welcomeMsg = document.getElementById('welcomeMsg');
+    nameInput.addEventListener('input', () => {
+      welcomeMsg.textContent = nameInput.value
+        ? `Hello, ${nameInput.value}! 👋`
+        : '';
+    });
+
+    // Form Validation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,}$/i;
+
+      if (!name || !email || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      alert('Your message has been sent successfully!');
+      this.reset();
+      welcomeMsg.textContent = '';
+    });
+
+    // Dark Mode Toggle
+    document.getElementById('dark-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+
+</body>
+</html>
